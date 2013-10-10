@@ -1,0 +1,8 @@
+<div class="hero-unit">
+  <h3>What'll it be?</h3>
+  <input type="text" ng-model="name" placeholder="Name">
+  <input type="text" ng-model="order" ng-keydown="submitOrder($event)" placeholder="What it be?">
+  <ul>
+    <li ng-repeat="order in orders">{{order.name}} - {{order.order}} <span ng-click="deleteOrder(order)">X</span></li>
+  </ul>
+</div>
