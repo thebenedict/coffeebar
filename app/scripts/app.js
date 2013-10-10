@@ -8,7 +8,7 @@ angular.module('coffeebarApp', ['firebase', 'ui.router'])
     $stateProvider
       .state('/', {
         url: '',
-        templateUrl: '/views/main.html',
+        templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       });
   });
