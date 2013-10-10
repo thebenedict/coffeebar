@@ -1,8 +1,37 @@
-<div class="hero-unit">
-  <h3>What'll it be?</h3>
-  <input type="text" ng-model="name" placeholder="Name">
-  <input type="text" ng-model="order" ng-keydown="submitOrder($event)" placeholder="What it be?">
-  <ul>
-    <li ng-repeat="order in orders">{{order.name}} - {{order.order}} <span ng-click="deleteOrder(order)">X</span></li>
-  </ul>
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12">
+        <form role="form">
+          <div class="form-group">
+            <label for="customerName">Your name</label>
+            <input ng-model="currentOrder.customerName" class="form-control" id="customerName" placeholder="Who be?">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-repeat="item in menu">
+      <div class="panel-body" ng-click="addToOrder(item)">
+        <h4>{{item.name}} <small class="pull-right">RWF {{item.price}}</small></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-default" ng-repeat="item in currentOrder.items">
+      <div class="panel-body" ng-click="addToOrder(item)">
+        <h4>{{item.name}} <small class="pull-right">RWF {{item.price}}</small></h4>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" ng-click="submitOrder()">Make it so!</button>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-default" ng-repeat="order in orders">
+      <div class="panel-body">
+        <h4>{{order.customerName}} <small class="pull-right">{{order.items.length}} items</small></h4>
+        <span ng-click="deleteOrder(order)">x</span>
+      </div>
+    </div>
+  </div>
 </div>
