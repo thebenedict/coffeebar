@@ -7,16 +7,50 @@ angular.module('coffeebarApp')
     $scope.orders = [];
     angularFire(ref, $scope, 'orders');
 
-    $scope.submitOrder = function(e) {
-      if (e.keyCode !== 13) { return; }
-      $scope.orders.push({name: $scope.name, order: $scope.order});
-      $scope.order = '';
+    $scope.currentOrder = {
+      customerName: '',
+      items: []
+    }
+
+    $scope.submitOrder = function() {
+      if (!$scope.currentOrder.items.length || !$scope.currentOrder.customerName) { return; }
+      console.log('submitting');
+      $scope.orders.push($scope.currentOrder);
+      $scope.currentOrder = {
+        customerName: '',
+        items: []
+      }
     };
+
+    $scope.addToOrder = function(item) {
+      $scope.currentOrder.items.push(item);
+    }
 
     $scope.deleteOrder = function(toRemove) {
-      $scope.orders.splice(toRemove, 1);
+      $scope.orders.splice($scope.orders.indexOf(toRemove), 1);
     };
 
-    $scope.awesomeThings = ['foo', 'bar', 'baz'];
+    $scope.menu = [
+      {
+        name: 'Small latte',
+        price: 700
+      },
+      {
+        name: 'Large latte',
+        price: 1000
+      },
+      {
+        name: 'Black Tea',
+        price: 300
+      },
+      {
+        name: 'Green Tea',
+        price: 300
+      },
+      {
+        name: 'Tea with milk',
+        price: 500
+      }
+    ]
 
   });
