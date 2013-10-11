@@ -10,7 +10,7 @@ angular.module('coffeebarApp')
     $scope.currentOrder = {
       customerName: '',
       items: []
-    }
+    };
 
     $scope.submitOrder = function() {
       if (!$scope.currentOrder.items.length || !$scope.currentOrder.customerName) { return; }
@@ -19,12 +19,12 @@ angular.module('coffeebarApp')
       $scope.currentOrder = {
         customerName: '',
         items: []
-      }
+      };
     };
 
     $scope.addToOrder = function(item) {
       $scope.currentOrder.items.push(item);
-    }
+    };
 
     $scope.deleteOrder = function(toRemove) {
       $scope.orders.splice($scope.orders.indexOf(toRemove), 1);
@@ -51,6 +51,7 @@ angular.module('coffeebarApp')
         name: 'Tea with milk',
         price: 500
       }
-    ]
+    ];
 
+    $scope.awesomeThings = [1,2,3];
   });

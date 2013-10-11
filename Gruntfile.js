@@ -26,15 +26,15 @@ module.exports = function (grunt) {
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
   } catch (e) {}
 
-  grunt.loadNpmTasks('grunt-bower-install'); 
+  grunt.loadNpmTasks('grunt-bower-install');
 
   grunt.initConfig({
     yeoman: yeomanConfig,
     'bower-install': {
-        target: {
-            html: '<%= yeoman.app %>/index.html',
-            ignorePath: '<%= yeoman.app %>/'
-        }
+      target: {
+        html: '<%= yeoman.app %>/index.html',
+        ignorePath: '<%= yeoman.app %>/'
+      }
     },
     watch: {
       coffee: {
